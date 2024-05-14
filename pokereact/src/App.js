@@ -28,7 +28,7 @@ function App() {
       </div>
     );}
   else if (page==="PokedexEntry") {
-    return <PokedexEntry />
+    return <PokedexEntry pokemon="pikachu"/>
   }
 }
 
