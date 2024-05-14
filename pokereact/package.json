@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "aws:login": "aws codeartifact login --tool npm --repository srclogic-components --domain srclogic --domain-owner 522085127585"
   },
   "eslintConfig": {
     "extends": [
