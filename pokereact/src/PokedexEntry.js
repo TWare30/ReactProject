@@ -1,6 +1,8 @@
-import logo from './logo.svg';
+import logo from './PokeReact.png';
 import './App.css';
 import {useState} from 'react';
+import { Splitter, SplitterPanel } from 'primereact/splitter';
+        
 
 function PokedexEntry() {
     const [page, setPage] = useState("Pikachu");
@@ -8,21 +10,20 @@ function PokedexEntry() {
         setPage("Home")
     }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          onClick={ChangePage}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {page}
-        </a>
-      </header>
+    <div className="Main Page">
+      <div className="topbar p-1 flex justify-content-between flex-row align-items-center" style={{'border-bottom-style':'solid'}}> 
+        <div className="ml-3 flex">
+          <span><img src={logo} alt=""></img></span>
+        </div>
+      </div>
+      <Splitter>
+        <SplitterPanel>
+            <p>Splitter panel one</p>
+        </SplitterPanel>
+        <SplitterPanel>
+            <p>Splitter panel two</p>
+        </SplitterPanel>
+      </Splitter>
     </div>
   );
 }
