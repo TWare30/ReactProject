@@ -29,7 +29,7 @@ function PokedexEntry(props) {
       return (
         <Splitter>
           <SplitterPanel>
-            <p>{entry.sprites.front_default}</p>
+            <img src={entry.sprites.front_default} />
           </SplitterPanel>
           <SplitterPanel>
             <p>test</p>
