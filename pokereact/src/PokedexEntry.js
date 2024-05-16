@@ -10,9 +10,12 @@ function PokedexEntry(props) {
   const [entry, setEntry] = useState({});
   const [species, setSpecies] = useState({});
   const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState([]);
 
   let pokeURL = "https://pokeapi.co/api/v2/pokemon/pikachu";
   let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/pikachu";
+
+  //initialize all the data needed for display
   useEffect(() => {
     axios.get(pokeURL).then((response) => {
       setEntry(response.data);
@@ -20,13 +23,16 @@ function PokedexEntry(props) {
     });
     axios.get(speciesURL).then((response) => {
       setSpecies(response.data);
-    });
+    })
   }, [props.pokemon]);
 
+  //this is the body of the function
   function NewLoader() {
     if (loading) {
-      return <div></div>;
+      return <div>Still Loading!</div>;
     } else {
+        let [hp, attack, defense, spAttack, spDefense, speed] = entry.stats;
+        setStats([hp, attack, defense, spAttack, spDefense, speed]);
       return (
         <Splitter>
           <SplitterPanel className="align-items-center">
@@ -44,10 +50,14 @@ function PokedexEntry(props) {
             <div>evolution chain stub</div>
           </SplitterPanel>
           <SplitterPanel>
-            <p>{species.genera[7].genus}</p>
+            <div><p>{species.genera[7].genus}</p>
             <p>
               {species.flavor_text_entries[1].flavor_text.replaceAll("\f", " ")}
             </p>
+            </div>
+            <div>
+            
+            </div>
           </SplitterPanel>
         </Splitter>
       );
