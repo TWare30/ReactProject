@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Splitter, SplitterPanel } from "primereact/splitter";
 import { Image } from "primereact/image";
 import axios from "axios";
+import StatBar from "./StatBar.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
@@ -15,15 +16,15 @@ function PokedexEntry(props) {
   let pokeURL = "https://pokeapi.co/api/v2/pokemon/pikachu";
   let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/pikachu";
 
-  //initialize all the data needed for display
+  //run all APIs immediately
   useEffect(() => {
     axios.get(pokeURL).then((response) => {
       setEntry(response.data);
-      setLoading(false);
     });
     axios.get(speciesURL).then((response) => {
       setSpecies(response.data);
-    })
+      setLoading(false);
+    });
   }, [props.pokemon]);
 
   //this is the body of the function
@@ -31,11 +32,9 @@ function PokedexEntry(props) {
     if (loading) {
       return <div>Still Loading!</div>;
     } else {
-        let [hp, attack, defense, spAttack, spDefense, speed] = entry.stats;
-        setStats([hp, attack, defense, spAttack, spDefense, speed]);
       return (
         <Splitter>
-          <SplitterPanel className="align-items-center">
+          <SplitterPanel className="flex flex-column align-items-center">
             <div>
               <h1 className="flex align-items-center">
                 {species.genera[7].genus}
@@ -49,14 +48,18 @@ function PokedexEntry(props) {
             />
             <div>evolution chain stub</div>
           </SplitterPanel>
-          <SplitterPanel>
-            <div><p>{species.genera[7].genus}</p>
-            <p>
-              {species.flavor_text_entries[1].flavor_text.replaceAll("\f", " ")}
-            </p>
+          <SplitterPanel className="flex flex-column">
+            <div>
+              <p>{species.genera[7].genus}</p>
+              <p>
+                {species.flavor_text_entries[1].flavor_text.replaceAll(
+                  "\f",
+                  " "
+                )}
+              </p>
             </div>
             <div>
-            
+              <StatBar stats={entry.stats}></StatBar>
             </div>
           </SplitterPanel>
         </Splitter>
