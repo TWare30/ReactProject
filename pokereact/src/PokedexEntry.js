@@ -13,8 +13,8 @@ function PokedexEntry(props) {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState([]);
 
-  let pokeURL = "https://pokeapi.co/api/v2/pokemon/pikachu";
-  let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/pikachu";
+  let pokeURL = `https://pokeapi.co/api/v2/pokemon/${props.pokemon}`;
+  let speciesURL = `https://pokeapi.co/api/v2/pokemon-species/${props.pokemon}`;
 
   //run all APIs immediately
   useEffect(() => {
