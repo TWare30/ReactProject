@@ -1,11 +1,13 @@
-import { useState, useEffect, createContext } from "react";
-import { PageContext } from "./App.js";
+import { useState, useEffect, useContext } from "react";
 
 function Pokedex(props) {
-  const { page, setPage } = useContext(PageContext);
   const [pokemonData, setPokemonData] = useState([]);
 
-  function HandleClick(pokename) {}
+  function HandleClick() {
+    props.setPokemon("pikachu");
+    props.setPage("PokedexEntry");
+  }
+
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=100")
       .then((response) => response.json())
