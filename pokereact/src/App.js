@@ -1,9 +1,12 @@
 import logo from "./PokeReact.png";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import "./App.css";
 import Pokedex from "./Pokedex.js";
+export const pageContext = createContext("Pokedex");
 
 function App() {
+  const [page, setPage] = useState(pageContext);
+
   return (
     <div className="App">
       <div
@@ -16,6 +19,7 @@ function App() {
           </span>
         </div>
       </div>
+
       <Pokedex></Pokedex>
     </div>
   );
