@@ -1,10 +1,11 @@
-import logo from "./PokeReact.png";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Splitter, SplitterPanel } from "primereact/splitter";
 import { Image } from "primereact/image";
 import axios from "axios";
 import StatBar from "./StatBar.js";
+import Header from "./Header.js";
+import TypeBox from "./TypeBox.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
@@ -18,12 +19,17 @@ function PokedexEntry(props) {
 
   //run all APIs immediately
   useEffect(() => {
+    let entryLoading = true;
+    let speciesLoading = true;
     axios.get(pokeURL).then((response) => {
       setEntry(response.data);
+      entryLoading = false;
+      setLoading(speciesLoading || entryLoading);
     });
     axios.get(speciesURL).then((response) => {
       setSpecies(response.data);
-      setLoading(false);
+      speciesLoading = false;
+      setLoading(speciesLoading || entryLoading);
     });
   }, [props.pokemon]);
 
@@ -50,13 +56,18 @@ function PokedexEntry(props) {
           </SplitterPanel>
           <SplitterPanel className="flex flex-column">
             <div>
-              <p>{species.genera[7].genus}</p>
               <p>
                 {species.flavor_text_entries[1].flavor_text.replaceAll(
                   "\f",
                   " "
                 )}
               </p>
+              <div className="flex flex-row p-1">
+                <TypeBox type={entry.types[0].type.name}></TypeBox>
+                {entry.types[1] && (
+                  <TypeBox type={entry.types[1].type.name}></TypeBox>
+                )}
+              </div>
             </div>
             <div>
               <StatBar stats={entry.stats}></StatBar>
@@ -69,16 +80,7 @@ function PokedexEntry(props) {
 
   return (
     <div className="Main Page">
-      <div
-        className="topbar p-1 flex justify-content-between flex-row align-items-center"
-        style={{ "border-bottom-style": "solid" }}
-      >
-        <div className="ml-3 flex">
-          <span>
-            <img src={logo} alt=""></img>
-          </span>
-        </div>
-      </div>
+      <Header></Header>
       {NewLoader()}
     </div>
   );

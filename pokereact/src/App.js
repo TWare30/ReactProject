@@ -1,14 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from 'react';
-import PokedexEntry from './PokedexEntry.js';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+import PokedexEntry from "./PokedexEntry.js";
 
 function App() {
   const [page, setPage] = useState("Home");
   function changePage() {
     setPage("PokedexEntry");
   }
-  if (page==="Home") {
+  if (page === "Home") {
     return (
       <div className="App">
         <header className="App-header">
@@ -26,9 +26,9 @@ function App() {
           </a>
         </header>
       </div>
-    );}
-  else if (page==="PokedexEntry") {
-    return <PokedexEntry pokemon="pikachu"/>
+    );
+  } else if (page === "PokedexEntry") {
+    return <PokedexEntry pokemon="murkrow" />;
   }
 }
 
