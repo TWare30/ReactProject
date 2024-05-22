@@ -15,10 +15,12 @@ function Pokedex(props) {
   }
 
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
-      setPokemonData(response.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=1302")
+      .then((response) => {
+        setPokemonData(response.data);
+        setLoading(false);
+      });
   }, []);
 
   function Card(data) {
@@ -47,6 +49,7 @@ function Pokedex(props) {
           value={pokemonData.results}
           itemTemplate={Card}
           rows={10}
+          buffer={0.4}
         ></DataScroller>
       </div>
     );
