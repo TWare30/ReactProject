@@ -11,6 +11,7 @@ function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
   const [entry, setEntry] = useState({});
   const [species, setSpecies] = useState({});
+  const [evoIndexes, setEvoIndexes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState([]);
 
@@ -31,6 +32,35 @@ function PokedexEntry(props) {
       speciesLoading = false;
       setLoading(speciesLoading || entryLoading);
     });
+    //if species is done, grab evolution chain
+    // if (speciesLoading === false) {
+    //   console.log("test");
+    //   axios.get(species.evolution_chain.url).then((response) => {
+    //     setEvoIndexes((prev) => {
+    //       let index;
+    //       for (let i = 0; i < 3; i++) {
+    //         switch (prev.length) {
+    //           case 0:
+    //             index = response.data.chain.species.url.slice(34).slice(0, -1);
+    //             prev.push(index);
+    //             break;
+    //           case 1:
+    //             index = response.data.chain.evolves_to.species.url
+    //               .slice(34)
+    //               .slice(0, -1);
+    //             prev.push(index);
+    //             break;
+    //           case 2:
+    //             index = response.data.chain.evolves_to.evolves_to.species.url
+    //               .slice(34)
+    //               .slice(0, -1);
+    //         }
+    //         //end of switch
+    //       }
+    //     });
+    //   });
+    // }
+    //end of if
   }, [props.pokemon]);
 
   //this is the body of the function
@@ -63,6 +93,7 @@ function PokedexEntry(props) {
                 )}
               </p>
               <div className="flex flex-row p-1">
+                {/* <span>Types: </span> */}
                 <TypeBox type={entry.types[0].type.name}></TypeBox>
                 {entry.types[1] && (
                   <TypeBox type={entry.types[1].type.name}></TypeBox>

@@ -5,11 +5,11 @@ import axios from "axios";
 function TypeBox(props) {
   const displayText = props.type.toUpperCase();
 
-  useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/type").then(() => {
-      console.log("test");
-    });
-  });
+  // useEffect(() => {
+  //   axios.get("https://pokeapi.co/api/v2/type").then(() => {
+  //     console.log("test");
+  //   });
+  // });
 
   return (
     <div>

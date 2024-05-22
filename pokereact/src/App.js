@@ -1,14 +1,17 @@
 import logo from "./PokeReact.png";
 import React, { useState, useEffect, useContext, createContext } from "react";
 import "./App.css";
+import "./index.css";
+import "primeflex/primeflex.css";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 import Pokedex from "./Pokedex.js";
 import PokedexEntry from "./PokedexEntry.js";
 export const PageContext = createContext("Pokedex");
-export const PokemonContext = createContext(null);
 
 function App() {
   const [page, setPage] = useState("Pokedex");
-  const [pokemon, setPokemon] = useState(PokemonContext);
+  const [pokemon, setPokemon] = useState();
 
   function goHome() {
     setPage("Pokedex");
