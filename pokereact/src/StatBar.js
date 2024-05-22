@@ -23,13 +23,13 @@ function StatBar(props) {
     >
       <div className="flex flex-column align-items-left" margin={0} padding={0}>
         <Bar color="green" stat={stats.hp} name="HP"></Bar>
-        <Bar color="red" stat={stats.attack}></Bar>
-        <Bar color="orange" stat={stats.defense}></Bar>
+        <Bar color="red" stat={stats.attack} name="Attack"></Bar>
+        <Bar color="orange" stat={stats.defense} name="Defense"></Bar>
       </div>
       <div className="flex flex-column align-items-left" margin={0} padding={0}>
-        <Bar color="purple" stat={stats.spAttack}></Bar>
-        <Bar color="blue" stat={stats.spDefense}></Bar>
-        <Bar color="yellow" stat={stats.speed}></Bar>
+        <Bar color="purple" stat={stats.spAttack} name="Sp. Attack"></Bar>
+        <Bar color="blue" stat={stats.spDefense} name="Sp. Defense"></Bar>
+        <Bar color="yellow" stat={stats.speed} name="Speed"></Bar>
       </div>
     </div>
   );

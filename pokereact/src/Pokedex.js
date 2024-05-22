@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { DataScroller } from "primereact/datascroller";
 import { Image } from "primereact/image";
@@ -46,15 +46,14 @@ function Pokedex(props) {
   if (loading) {
     return <LoadingScreen></LoadingScreen>;
   } else {
+    console.log(pokemonData.results.length);
     return (
-      <div scrollable>
+      <div>
         <DataScroller
           value={pokemonData.results}
           itemTemplate={Card}
           rows={10}
           buffer={0.4}
-          inline
-          scrollable
         ></DataScroller>
       </div>
     );

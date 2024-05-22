@@ -13,7 +13,7 @@ function TypeBox(props) {
 
   return (
     <div>
-      <span className={"pokemonType " + props.type}>{displayText}</span>
+      <span className={`pokemonType ${props.type}`}>{displayText}</span>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 function Bar(props) {
+  const { name, stat } = props;
   const ParentDiv = {
     backgroundColor: "whitesmoke",
     width: 252,
@@ -24,10 +25,11 @@ function Bar(props) {
   };
 
   return (
-    <div>
+    <div className="flex flex-row">
+      <div>{name}</div>
       <div style={ParentDiv}>
         <div style={ChildDiv}>
-          <span style={ProgressText}>{props.stat}</span>
+          <span style={ProgressText}>{stat}</span>
         </div>
       </div>
     </div>
