@@ -78,12 +78,7 @@ function PokedexEntry(props) {
     }
   }
 
-  return (
-    <div className="Main Page">
-      <Header></Header>
-      {NewLoader()}
-    </div>
-  );
+  return <div className="Main Page">{NewLoader()}</div>;
 }
 
 export default PokedexEntry;

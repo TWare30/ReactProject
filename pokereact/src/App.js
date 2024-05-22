@@ -10,6 +10,10 @@ function App() {
   const [page, setPage] = useState("Pokedex");
   const [pokemon, setPokemon] = useState(PokemonContext);
 
+  function goHome() {
+    setPage("Pokedex");
+  }
+
   return (
     <div className="App">
       <div
@@ -18,7 +22,7 @@ function App() {
       >
         <div className="ml-3 flex">
           <span>
-            <img src={logo} alt=""></img>
+            <img onClick={goHome} src={logo} alt=""></img>
           </span>
         </div>
       </div>

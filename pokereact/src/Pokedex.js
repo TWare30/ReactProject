@@ -1,42 +1,56 @@
 import { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { DataScroller } from "primereact/datascroller";
+import { Image } from "primereact/image";
+import LoadingScreen from "./LoadingScreen.js";
+import logo from "./PokeReact.png";
 
 function Pokedex(props) {
   const [pokemonData, setPokemonData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  function HandleClick() {
-    props.setPokemon("pikachu");
+  function HandleClick(e) {
+    props.setPokemon(e.target.alt);
     props.setPage("PokedexEntry");
   }
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=100")
-      .then((response) => response.json())
-      .then((data) => {
-        setPokemonData(data.results);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
+      setPokemonData(response.data);
+      setLoading(false);
+    });
   }, []);
-  return (
-    <table>
-      <tbody>
-        {pokemonData.map((pokemon, index) => (
-          <tr key={index}>
-            <td>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-                  index + 1
-                }.png`}
-                alt={pokemon.name}
-              />
-            </td>
-            <td onClick={HandleClick}>{pokemon.name}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+
+  function Card(data) {
+    let titleName = data.name.charAt(0).toUpperCase() + data.name.substr(1);
+    let index = data.url.slice(34).slice(0, -1);
+    let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`;
+    return (
+      <div className="flex justify-items-center align-items-center">
+        <h2>{titleName}</h2>
+        <Image
+          src={image}
+          className="flex h-full justify-items-center"
+          alt={data.name}
+          onClick={HandleClick}
+        />
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <LoadingScreen></LoadingScreen>;
+  } else {
+    return (
+      <div>
+        <DataScroller
+          value={pokemonData.results}
+          itemTemplate={Card}
+          rows={10}
+        ></DataScroller>
+      </div>
+    );
+  }
 }
 
 export default Pokedex;
