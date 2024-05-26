@@ -6,14 +6,13 @@ import axios from "axios";
 import StatBar from "./StatBar.js";
 import Header from "./Header.js";
 import TypeBox from "./TypeBox.js";
+import EvoChain from "./EvoChain.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
   const [entry, setEntry] = useState({});
   const [species, setSpecies] = useState({});
-  const [evoIndexes, setEvoIndexes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState([]);
 
   let pokeURL = `https://pokeapi.co/api/v2/pokemon/${props.pokemon}`;
   let speciesURL = `https://pokeapi.co/api/v2/pokemon-species/${props.pokemon}`;
@@ -53,7 +52,9 @@ function PokedexEntry(props) {
               alt={props.pokemon}
               preview
             />
-            <div>evolution chain stub</div>
+            <div>
+              <EvoChain></EvoChain>
+            </div>
           </SplitterPanel>
           <SplitterPanel className="flex flex-column">
             <div>
@@ -64,7 +65,7 @@ function PokedexEntry(props) {
                 )}
               </p>
               <div className="flex flex-row p-1">
-                {/* <span>Types: </span> */}
+                <span>Types: </span>
                 {entry.types.map((type) => {
                   return (
                     <TypeBox
@@ -73,10 +74,6 @@ function PokedexEntry(props) {
                     ></TypeBox>
                   );
                 })}
-                {/* <TypeBox type={entry.types[0].type.name}></TypeBox>
-                {entry.types[1] && (
-                  <TypeBox type={entry.types[1].type.name}></TypeBox>
-                )} */}
               </div>
             </div>
             <div>

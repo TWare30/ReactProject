@@ -31,7 +31,7 @@ function Pokedex(props) {
     let index = data.url.slice(34).slice(0, -1);
     let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`;
     return (
-      <div className="flex overflow-scroll justify-items-center align-items-center col-12">
+      <div className="flex justify-items-center align-items-center col-12">
         <h2>{titleName}</h2>
         <Image
           src={image}
