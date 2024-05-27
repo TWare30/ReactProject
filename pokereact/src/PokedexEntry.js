@@ -53,7 +53,7 @@ function PokedexEntry(props) {
               preview
             />
             <div>
-              <EvoChain></EvoChain>
+              <EvoChain chainURL={species.evolution_chain.url}></EvoChain>
             </div>
           </SplitterPanel>
           <SplitterPanel className="flex flex-column">

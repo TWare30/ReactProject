@@ -46,7 +46,6 @@ function Pokedex(props) {
   if (loading) {
     return <LoadingScreen></LoadingScreen>;
   } else {
-    console.log(pokemonData.results.length);
     return (
       <div>
         <DataScroller
