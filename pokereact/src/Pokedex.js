@@ -7,6 +7,7 @@ import "./index.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { toTitleCase } from "./HelperFunctions.js";
 
 function Pokedex(props) {
   const [pokemonData, setPokemonData] = useState([]);
@@ -27,7 +28,7 @@ function Pokedex(props) {
   }, []);
 
   function Card(data) {
-    let titleName = data.name.charAt(0).toUpperCase() + data.name.substr(1);
+    let titleName = toTitleCase(data.name);
     let index = data.url.slice(34).slice(0, -1);
     let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`;
     return (

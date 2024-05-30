@@ -18,7 +18,7 @@ function EvoChain(props) {
     return <LoadingScreen></LoadingScreen>;
   } else {
     return (
-      <div className="flex flex-row align-contents-center justify-contents-center align-items-center">
+      <div className="flex flex-row">
         <Chain species={chain.chain}></Chain>
       </div>
     );

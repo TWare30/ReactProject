@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import LoadingScreen from "./LoadingScreen";
 import { Image } from "primereact/image";
-import axios from "axios";
+import { toTitleCase } from "./HelperFunctions.js";
 
 function Chain(props) {
   const { name, url } = props.species.species;
@@ -9,12 +7,15 @@ function Chain(props) {
   const hasNext = props.species.evolves_to.length;
 
   return (
-    <div className="flex flex-row justify-content-center align-content-center align-items-center">
-      <Image
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-        className="flex h-full align-items-center w-1 h-1"
-        alt={name}
-      />
+    <div className="flex justify-content-center">
+      <span>
+        <Image
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+          className="flex w-full align-items-center"
+          alt={name}
+        />
+        <h4>{toTitleCase(name)}</h4>
+      </span>
       {hasNext > 0 && "=>"}
       {hasNext > 0 && <Chain species={props.species.evolves_to[0]}></Chain>}
     </div>
