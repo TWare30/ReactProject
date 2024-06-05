@@ -19,7 +19,7 @@ function EvoChain(props) {
   } else {
     return (
       <div className="flex flex-row">
-        <Chain species={chain.chain}></Chain>
+        <Chain setPokemon={props.setPokemon} species={chain.chain}></Chain>
       </div>
     );
   }

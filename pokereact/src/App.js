@@ -33,7 +33,7 @@ function App() {
         <Pokedex setPage={setPage} setPokemon={setPokemon}></Pokedex>
       )}
       {page === "PokedexEntry" && (
-        <PokedexEntry pokemon={pokemon}></PokedexEntry>
+        <PokedexEntry setPokemon={setPokemon} pokemon={pokemon}></PokedexEntry>
       )}
     </div>
   );

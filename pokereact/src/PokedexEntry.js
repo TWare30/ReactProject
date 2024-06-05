@@ -7,6 +7,7 @@ import StatBar from "./StatBar.js";
 import Header from "./Header.js";
 import TypeBox from "./TypeBox.js";
 import EvoChain from "./EvoChain.js";
+import AbilitiesPanel from "./AbilitiesPanel.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
@@ -53,7 +54,10 @@ function PokedexEntry(props) {
               preview
             />
             <div>
-              <EvoChain chainURL={species.evolution_chain.url}></EvoChain>
+              <EvoChain
+                setPokemon={props.setPokemon}
+                chainURL={species.evolution_chain.url}
+              ></EvoChain>
             </div>
           </SplitterPanel>
           <SplitterPanel className="flex flex-column">
@@ -79,6 +83,7 @@ function PokedexEntry(props) {
             <div>
               <StatBar stats={entry.stats}></StatBar>
             </div>
+            <AbilitiesPanel abilities={entry.abilities}></AbilitiesPanel>
           </SplitterPanel>
         </Splitter>
       );
