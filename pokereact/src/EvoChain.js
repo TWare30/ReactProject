@@ -17,11 +17,14 @@ function EvoChain(props) {
   if (loading) {
     return <LoadingScreen></LoadingScreen>;
   } else {
-    return (
-      <div className="flex flex-row">
-        <Chain setPokemon={props.setPokemon} species={chain.chain}></Chain>
-      </div>
-    );
+    const chains = [];
+    let curr = chain.chain;
+    while (curr) {
+      chains.push(<Chain setPokemon={props.setPokemon} species={curr}></Chain>);
+      curr = curr.evolves_to?.[0];
+    }
+
+    return <div className="col-12 grid">{chains}</div>;
   }
 }
 

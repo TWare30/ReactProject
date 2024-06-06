@@ -53,7 +53,7 @@ function PokedexEntry(props) {
               alt={props.pokemon}
               preview
             />
-            <div>
+            <div className="align-contents-center">
               <EvoChain
                 setPokemon={props.setPokemon}
                 chainURL={species.evolution_chain.url}

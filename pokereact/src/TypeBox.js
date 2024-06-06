@@ -1,7 +1,8 @@
 import "./TypeDictionary.css";
+import { useState } from "react";
 
 function TypeBox(props) {
-  const displayText = props.type.toUpperCase();
+  const [displayText, setDisplayText] = useState(props.type.toUpperCase());
 
   return (
     <div>

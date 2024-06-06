@@ -1,5 +1,7 @@
-import TypeBox from "./TypeBox";
+import "./TypeDictionary.css";
 import React from "react";
+import { Tag } from "primereact/tag";
+import { OverlayPanel } from "primereact/overlaypanel";
 
 export default function AbilitiesPanel(props) {
   return (
@@ -7,12 +9,14 @@ export default function AbilitiesPanel(props) {
       <span>Abilities</span>
       {props.abilities.map((ability) => {
         return (
-          <TypeBox
-            key={ability.ability.name}
-            type={ability.ability.name}
-            alt={ability.ability.url}
-            onMouseEnter={(alt) => alert(alt)}
-          ></TypeBox>
+          <span>
+            <Tag
+              value={ability.ability.name}
+              alt={ability.ability.url}
+              test="dude"
+            ></Tag>
+            <OverlayPanel></OverlayPanel>
+          </span>
         );
       })}
     </div>
