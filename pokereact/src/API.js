@@ -8,6 +8,11 @@ const API = {
         return response.data;
       });
   },
+  getAbility: (url) => {
+    axios.get(url).then((response) => {
+      return response.data.effect_entries[0].effect;
+    });
+  },
 };
 
 export default API;

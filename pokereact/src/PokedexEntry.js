@@ -8,6 +8,7 @@ import Header from "./Header.js";
 import TypeBox from "./TypeBox.js";
 import EvoChain from "./EvoChain.js";
 import AbilitiesPanel from "./AbilitiesPanel.js";
+import { toTitleCase } from "./HelperFunctions.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
@@ -40,52 +41,57 @@ function PokedexEntry(props) {
       return <div>Still Loading!</div>;
     } else {
       return (
-        <Splitter>
-          <SplitterPanel className="flex flex-column align-items-center">
-            <div>
-              <h1 className="flex align-items-center">
-                {species.genera[7].genus}
-              </h1>
-            </div>
-            <Image
-              src={entry.sprites.other["official-artwork"].front_default}
-              className="flex h-full align-items-center"
-              alt={props.pokemon}
-              preview
-            />
-            <div className="align-contents-center">
-              <EvoChain
-                setPokemon={props.setPokemon}
-                chainURL={species.evolution_chain.url}
-              ></EvoChain>
-            </div>
-          </SplitterPanel>
-          <SplitterPanel className="flex flex-column">
-            <div>
+        <div>
+          <h1>{`${toTitleCase(props.pokemon)}, the ${
+            species.genera[7].genus
+          }`}</h1>
+          <Splitter>
+            <SplitterPanel className="flex flex-column align-items-center border-double">
+              <Image
+                src={entry.sprites.other["official-artwork"].front_default}
+                className="flex h-full align-items-center"
+                alt={props.pokemon}
+                preview
+              />
+              <div className="align-contents-center border-double">
+                <EvoChain
+                  setPokemon={props.setPokemon}
+                  chainURL={species.evolution_chain.url}
+                ></EvoChain>
+              </div>
+            </SplitterPanel>
+
+            <SplitterPanel className="flex flex-column">
+              <div>
+                <div className="border-double">
+                  <h4 className="No-Margins">Types</h4>
+                  <div className="flex flex-row p-1 justify-content-center">
+                    {entry.types.map((type) => {
+                      return (
+                        <TypeBox
+                          key={type.type.name}
+                          type={type.type.name}
+                        ></TypeBox>
+                      );
+                    })}
+                  </div>
+                </div>
+                <AbilitiesPanel abilities={entry.abilities}></AbilitiesPanel>
+              </div>
+
+              <div className="border-double">
+                <StatBar stats={entry.stats}></StatBar>
+              </div>
+
               <p>
                 {species.flavor_text_entries[1].flavor_text.replaceAll(
                   "\f",
                   " "
                 )}
               </p>
-              <div className="flex flex-row p-1">
-                <span>Types: </span>
-                {entry.types.map((type) => {
-                  return (
-                    <TypeBox
-                      key={type.type.name}
-                      type={type.type.name}
-                    ></TypeBox>
-                  );
-                })}
-              </div>
-            </div>
-            <div>
-              <StatBar stats={entry.stats}></StatBar>
-            </div>
-            <AbilitiesPanel abilities={entry.abilities}></AbilitiesPanel>
-          </SplitterPanel>
-        </Splitter>
+            </SplitterPanel>
+          </Splitter>
+        </div>
       );
     }
   }

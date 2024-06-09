@@ -20,11 +20,23 @@ function EvoChain(props) {
     const chains = [];
     let curr = chain.chain;
     while (curr) {
-      chains.push(<Chain setPokemon={props.setPokemon} species={curr}></Chain>);
+      chains.push(
+        <Chain
+          key={curr.id}
+          setPokemon={props.setPokemon}
+          species={curr}
+        ></Chain>
+      );
+      chains.push(<div>{"=>"}</div>);
       curr = curr.evolves_to?.[0];
     }
+    chains.pop();
 
-    return <div className="col-12 grid">{chains}</div>;
+    return (
+      <div className="flex flex-row justify-content-center align-items-center">
+        {chains}
+      </div>
+    );
   }
 }
 

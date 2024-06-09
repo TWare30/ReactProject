@@ -23,15 +23,7 @@ function Chain(props) {
         />
         <h4>{toTitleCase(name)}</h4>
       </span>
-      {/* {hasNext > 0 && "=>"} */}
     </div>
-
-    // {/* {hasNext > 0 && (
-    //   <Chain
-    //     setPokemon={props.setPokemon}
-    //     species={props.species.evolves_to[0]}
-    //   ></Chain>
-    // )} */}
   );
 }
 
