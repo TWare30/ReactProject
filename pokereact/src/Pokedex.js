@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { DataScroller } from "primereact/datascroller";
 import { Image } from "primereact/image";
 import LoadingScreen from "./LoadingScreen.js";
 import "./index.css";
@@ -27,19 +26,29 @@ function Pokedex(props) {
       });
   }, []);
 
-  function Card(data) {
-    let titleName = toTitleCase(data.name);
-    let index = data.url.slice(34).slice(0, -1);
+  function Card(props) {
+    let { name, url } = props;
+    let titleName = toTitleCase(name);
+    let index = url.slice(34).slice(0, -1);
     let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`;
     return (
-      <div className="flex justify-items-center align-items-center col-12">
-        <h2>{titleName}</h2>
-        <Image
-          src={image}
-          className="flex h-full justify-items-center"
-          alt={data.name}
-          onClick={HandleClick}
-        />
+      <div className="flex justify-center items-center flex-col col-4">
+        <div
+          style={{
+            border: "1px solid #ccc",
+            padding: "10px",
+            margin: "10px",
+            borderRadius: "5px",
+          }}
+        >
+          <Image
+            src={image}
+            className="h-64"
+            alt={name}
+            onClick={HandleClick}
+          />
+          <div className="text-center">{titleName}</div>
+        </div>
       </div>
     );
   }
@@ -48,13 +57,16 @@ function Pokedex(props) {
     return <LoadingScreen></LoadingScreen>;
   } else {
     return (
-      <div>
-        <DataScroller
+      <div className="flex flex-wrap col-12">
+        {pokemonData.results.map((data) => {
+          return <Card name={data.name} url={data.url}></Card>;
+        })}
+        {/* <DataScroller
           value={pokemonData.results}
           itemTemplate={Card}
           rows={10}
           buffer={0.4}
-        ></DataScroller>
+        ></DataScroller> */}
       </div>
     );
   }

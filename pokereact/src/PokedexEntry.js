@@ -9,6 +9,7 @@ import TypeBox from "./TypeBox.js";
 import EvoChain from "./EvoChain.js";
 import AbilitiesPanel from "./AbilitiesPanel.js";
 import { toTitleCase } from "./HelperFunctions.js";
+import FlavorText from "./FlavorText.js";
 
 function PokedexEntry(props) {
   const [page, setPage] = useState(props.pokemon);
@@ -83,12 +84,13 @@ function PokedexEntry(props) {
                 <StatBar stats={entry.stats}></StatBar>
               </div>
 
-              <p>
-                {species.flavor_text_entries[1].flavor_text.replaceAll(
+              <div>
+                <FlavorText entries={species.flavor_text_entries}></FlavorText>
+                {/* {species.flavor_text_entries[1].flavor_text.replaceAll(
                   "\f",
                   " "
-                )}
-              </p>
+                )} */}
+              </div>
             </SplitterPanel>
           </Splitter>
         </div>
