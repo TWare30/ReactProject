@@ -22,14 +22,14 @@ function StatBar(props) {
       padding={0}
     >
       <div className="flex flex-column align-items-left" margin={0} padding={0}>
-        <Bar color="green" stat={stats.hp} name="HP"></Bar>
-        <Bar color="red" stat={stats.attack} name="Attack"></Bar>
-        <Bar color="orange" stat={stats.defense} name="Defense"></Bar>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>HP</h4><Bar color="green" stat={stats.hp} /></div>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>Attack</h4><Bar color="red" stat={stats.attack} /></div>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>Defense</h4><Bar color="orange" stat={stats.defense} /></div>
       </div>
       <div className="flex flex-column align-items-left" margin={0} padding={0}>
-        <Bar color="purple" stat={stats.spAttack} name="Sp. Attack"></Bar>
-        <Bar color="blue" stat={stats.spDefense} name="Sp. Defense"></Bar>
-        <Bar color="yellow" stat={stats.speed} name="Speed"></Bar>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>Sp. Attack</h4><Bar color="purple" stat={stats.spAttack} /></div>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>Sp. Defense</h4><Bar color="blue" stat={stats.spDefense} /></div>
+        <div style={{ display: 'flex', alignItems: 'center' }}><h4 style={{ margin: '0px'}}>Speed</h4><Bar color="yellow" stat={stats.speed} /></div>
       </div>
     </div>
   );

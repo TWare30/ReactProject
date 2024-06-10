@@ -42,8 +42,8 @@ function PokedexEntry(props) {
       return <div>Still Loading!</div>;
     } else {
       return (
-        <div>
-          <h1>{`${toTitleCase(props.pokemon)}, the ${
+        <div style={{backgroundColor: "#cc0000", margin: '0'}}>
+          <h1 style={{margin: '0', color:"white"}}>{`${toTitleCase(props.pokemon)}, the ${
             species.genera[7].genus
           }`}</h1>
           <Splitter>
@@ -93,7 +93,7 @@ function PokedexEntry(props) {
               </div>
             </SplitterPanel>
           </Splitter>
-        </div>
+          </div>
       );
     }
   }

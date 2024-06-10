@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <div
         className="topbar p-1 flex justify-content-between flex-row"
-        style={{ borderBottomStyle: "solid" }}
+        style={{ borderBottomStyle: "solid", backgroundColor: "#cc0000"}}
       >
         <div className="ml-3 flex">
           <span>
