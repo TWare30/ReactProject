@@ -12,7 +12,7 @@ function EvoChain(props) {
       setChain(response.data);
       setLoading(false);
     });
-  });
+  }, []);
 
   if (loading) {
     return <LoadingScreen></LoadingScreen>;

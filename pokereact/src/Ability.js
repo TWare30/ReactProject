@@ -16,7 +16,7 @@ export default function Ability(props) {
       setEffect(tempEffect);
       setLoading(false);
     });
-  });
+  }, []);
 
   if (loading) {
     return <LoadingScreen></LoadingScreen>;

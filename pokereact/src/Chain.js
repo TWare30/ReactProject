@@ -4,7 +4,6 @@ import { toTitleCase } from "./HelperFunctions.js";
 function Chain(props) {
   const { name, url } = props.species.species;
   const id = url.slice(42).slice(0, -1);
-  const hasNext = props.species.evolves_to.length;
 
   function HandleClick(e) {
     props.setPokemon(e.target.alt);

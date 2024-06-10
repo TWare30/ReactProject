@@ -1,12 +1,7 @@
 import "./TypeDictionary.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import LoadingScreen from "./LoadingScreen.js";
 import Ability from "./Ability.js";
 
 export default function AbilitiesPanel(props) {
-  const [effectsArray, setEffectsArray] = useState([]);
-
   return (
     <div className="border-double mb-1 mt-1">
       <h4 className="No-Margins">Abilities</h4>

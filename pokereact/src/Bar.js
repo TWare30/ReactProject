@@ -3,9 +3,10 @@ import React from "react";
 function Bar(props) {
   const { name, stat } = props;
   const ParentDiv = {
-    backgroundColor: "whitesmoke",
-    width: 252,
+    backgroundColor: "LightGray",
+    width: 256,
     borderRadius: 50,
+    borderColor: "black",
     margin: 0,
     padding: 0,
   };
@@ -16,6 +17,7 @@ function Bar(props) {
     backgroundColor: props.color,
     borderRadius: 40,
     textAlign: "right",
+    "margin-right": 1,
   };
 
   const ProgressText = {
@@ -25,9 +27,9 @@ function Bar(props) {
   };
 
   return (
-    <div className="flex flex-row">
-      <div>{name}</div>
-      <div style={ParentDiv}>
+    <div className="flex flex-row No-Margins">
+      <div className="col-4 No-Margins">{name + ":"}</div>
+      <div className="col-8 border-1" style={ParentDiv}>
         <div style={ChildDiv}>
           <span style={ProgressText}>{stat}</span>
         </div>
