@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Tag } from "primereact/tag";
-import { toTitleCase } from "./HelperFunctions";
+import { toTitleCase, getEnglish } from "./HelperFunctions";
 import { Tooltip } from "primereact/tooltip";
 import axios from "axios";
 import LoadingScreen from "./LoadingScreen";
@@ -12,13 +12,7 @@ export default function Ability(props) {
 
   useEffect(() => {
     axios.get(url).then((response) => {
-      let tempEffect;
-      console.log(response.data.effect_entries);
-      let tempArr = response.data.effect_entries.filter((item) => {
-        return item.language.name === "en";
-      });
-      console.log(tempArr);
-      tempEffect = tempArr[0].short_effect;
+      let tempEffect = getEnglish(response.data.effect_entries).short_effect;
       setEffect(tempEffect);
       setLoading(false);
     });

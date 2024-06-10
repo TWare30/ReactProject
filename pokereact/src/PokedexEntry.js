@@ -8,7 +8,7 @@ import Header from "./Header.js";
 import TypeBox from "./TypeBox.js";
 import EvoChain from "./EvoChain.js";
 import AbilitiesPanel from "./AbilitiesPanel.js";
-import { toTitleCase } from "./HelperFunctions.js";
+import { toTitleCase, getEnglish } from "./HelperFunctions.js";
 import FlavorText from "./FlavorText.js";
 
 function PokedexEntry(props) {
@@ -44,7 +44,7 @@ function PokedexEntry(props) {
       return (
         <div>
           <h1>{`${toTitleCase(props.pokemon)}, the ${
-            species.genera[7].genus
+            getEnglish(species.genera).genus
           }`}</h1>
           <Splitter>
             <SplitterPanel className="flex flex-column align-items-center border-double">
