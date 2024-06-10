@@ -32,7 +32,7 @@ function Pokedex(props) {
     let index = url.slice(34).slice(0, -1);
     let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`;
     return (
-      <div className="flex justify-center items-center flex-col col-3">
+      <div className="flex justify-center items-center flex-col col-4">
         <div
           style={{
             border: "1px solid #ccc",
@@ -40,16 +40,26 @@ function Pokedex(props) {
             margin: "10px",
             borderRadius: "5px",
             backgroundColor: "#FFFFFF",
-            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)"
+            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
           }}
         >
           <Image
             src={image}
             className="h-64"
             alt={name}
+            width={"100%"}
             onClick={HandleClick}
           />
-          <div className="text-center" style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold', textDecoration: 'underline' }}>{titleName}</div>
+          <div
+            className="text-center"
+            style={{
+              fontFamily: "Arial, Helvetica, sans-serif",
+              fontWeight: "bold",
+              textDecoration: "underline",
+            }}
+          >
+            {titleName}
+          </div>
         </div>
       </div>
     );
@@ -59,7 +69,7 @@ function Pokedex(props) {
     return <LoadingScreen></LoadingScreen>;
   } else {
     return (
-      <div className="flex flex-wrap col-40" style={{backgroundColor: "#cc0000"}}>
+      <div className="flex flex-wrap" style={{ backgroundColor: "#cc0000" }}>
         {pokemonData.results.map((data) => {
           return <Card name={data.name} url={data.url}></Card>;
         })}
