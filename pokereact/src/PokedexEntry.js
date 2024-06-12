@@ -42,10 +42,10 @@ function PokedexEntry(props) {
       return <div>Still Loading!</div>;
     } else {
       return (
-        <div>
-          <h1>{`${toTitleCase(props.pokemon)}, the ${
-            getEnglish(species.genera).genus
-          }`}</h1>
+        <div style={{ backgroundColor: "#cc0000", margin: "0" }}>
+          <h1 style={{ margin: "0", color: "white" }}>{`${toTitleCase(
+            props.pokemon
+          )}, the ${getEnglish(species.genera).genus}`}</h1>
           <Splitter>
             <SplitterPanel className="flex flex-column align-items-center border-double">
               <Image
