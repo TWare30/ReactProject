@@ -86,10 +86,6 @@ function PokedexEntry(props) {
 
               <div>
                 <FlavorText entries={species.flavor_text_entries}></FlavorText>
-                {/* {species.flavor_text_entries[1].flavor_text.replaceAll(
-                  "\f",
-                  " "
-                )} */}
               </div>
             </SplitterPanel>
           </Splitter>
