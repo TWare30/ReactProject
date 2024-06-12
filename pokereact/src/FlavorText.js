@@ -21,12 +21,12 @@ export default function FlavorText(props) {
     });
     setPokedexEntries(newEntries);
     setLoading(false);
-  }, []);
+  }, [props]);
 
   function Card(data) {
     return (
       <div className="m-3 border-dashed border-1">
-        <span className="">{data}</span>
+        <span>{data}</span>
       </div>
     );
   }
@@ -36,17 +36,14 @@ export default function FlavorText(props) {
     console.log(typeof pokedexEntries);
     return (
       <div className="border-double">
+        <h4 className="No-Margins">Pokedex Entries</h4>
         <VirtualScroller
           className="w-full"
           items={pokedexEntries}
           itemSize={50}
           itemTemplate={Card}
           scrollHeight="600px"
-        >
-          {/* {pokedexEntries.map((data, index) => {
-            return <Card text={data} i={index + 1}></Card>;
-          })} */}
-        </VirtualScroller>
+        ></VirtualScroller>
       </div>
     );
   }
